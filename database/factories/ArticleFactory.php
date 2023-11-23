@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- *
+ * Factory zum Erstellen von Testdaten für die Article-Entität
  */
 class ArticleFactory extends Factory
 {

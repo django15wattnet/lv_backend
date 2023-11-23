@@ -6,6 +6,9 @@ use App\Service\LoremIpsum\DecoratorEnum;
 use App\Service\LoremIpsum\TextSizeEnum;
 use Illuminate\Support\Facades\Http;
 
+/**
+ * Service zum Abrufen von Lorem-Ipsum-Texten aus der loripsum.net
+ */
 class LoremIpsumService
 {
     /*
@@ -17,18 +20,18 @@ class LoremIpsumService
     public function getText(
         int $cntParagraphs,
         TextSizeEnum $textSize,
-        DecoratorEnum ...$decorator): string
+        DecoratorEnum ...$decorators): string
     {
         $url = self::BASE_URL
             . "{$cntParagraphs}/{$textSize->value}/"
             . implode(
                 '/',
                 array_map(
-                    function($ed): string
+                    function($decorator): string
                     {
-                        return $ed->value;
+                        return $decorator->value;
                     },
-                    $decorator
+                    $decorators
                 )
             );
 
